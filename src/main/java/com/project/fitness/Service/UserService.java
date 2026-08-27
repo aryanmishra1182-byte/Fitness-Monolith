@@ -2,20 +2,13 @@ package com.project.fitness.Service;
 
 import com.project.fitness.Repository.UserRepository;
 import com.project.fitness.dto.LoginRequest;
-import com.project.fitness.dto.LoginResponse;
 import com.project.fitness.dto.RegisterRequest;
 import com.project.fitness.dto.UserResponse;
 import com.project.fitness.model.User;
 import com.project.fitness.model.UserRole;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.beans.Encoder;
-import java.time.Instant;
-import java.time.ZoneOffset;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -39,13 +32,14 @@ private final PasswordEncoder passwordEncoder;
 
     public UserResponse mapToResponse(User savedUser) {
         UserResponse response = new UserResponse();
+
         response.setId(savedUser.getId());
         response.setEmail(savedUser.getEmail());
         response.setFirstname(savedUser.getFirstname());
         response.setLastname(savedUser.getLastname());
-        response.setPassword(savedUser.getPassword());
         response.setCreatedAt(savedUser.getCreatedAt());
         response.setUpdatedAt(savedUser.getUpdatedAt());
+
         return response;
     }
 
